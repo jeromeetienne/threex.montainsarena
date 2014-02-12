@@ -28,6 +28,8 @@ THREEx.MontainsArena	= function(){
 	return container;
 }
 
+THREEx.MontainsArena.defaultMaterial	= THREE.MeshNormalMaterial
+
 THREEx.MontainsArena.buildArenaRow	= function(opts){
 	// handle default arguments
 	opts			= opts	|| {}
@@ -40,7 +42,9 @@ THREEx.MontainsArena.buildArenaRow	= function(opts){
 	var radiusBottomMin	= opts.radiusBottomMin !== undefined	? opts.radiusBottomMin	: 0.8/20
 	var radiusBottomMax	= opts.radiusBottomMax !== undefined	? opts.radiusBottomMax	: 0.8/20
 	
-	var material		= new THREE.MeshNormalMaterial()
+	var material		= new THREEx.MontainsArena.defaultMaterial({
+		color	: 'teal'
+	})
 	for(var i = 0; i < nClusters; i++ ){
 		var angle	= (i / nClusters) * (Math.PI*2);
 		for(var j = 0; j < nPerCluster; j++){
@@ -57,3 +61,4 @@ THREEx.MontainsArena.buildArenaRow	= function(opts){
 	}
 	return opts.container;
 }
+
